@@ -4,10 +4,6 @@ workflows:
     environment:
       vars:
         PROJECT_NAME: "MyReactNativeApp" # Replace with your project name
-      android:
-        api_level: 30
-        build_tools: "30.0.3"
-        abi: "x86_64" # Emulator architecture
     scripts:
       - name: Install dependencies
         script: |
@@ -26,4 +22,4 @@ workflows:
     publishing:
       email:
         recipients:
-          - "ikram.ul.haqrmit.edu.au" # Replace with your email for build status notifications
+          - "ikram.ul.haq@rmit.edu.au" # Replace with your email for build status notifications
