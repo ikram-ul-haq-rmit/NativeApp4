@@ -10,7 +10,7 @@ workflows:
           npm install
       - name: Set up AVD
         script: |
-          echo "no" | avdmanager create avd -n test -k "system-images;android-30;google_apis;x86_64"
+          echo "no" | avdmanager create avd -n test -k "android-30;x86_64"
           emulator -avd test -no-audio -no-window &
           adb wait-for-device
       - name: Run App on Emulator
