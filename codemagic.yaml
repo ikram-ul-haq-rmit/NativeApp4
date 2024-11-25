@@ -1,23 +1,29 @@
 workflows:
-  android:
-    name: Android Build Workflow
+  android_emulator:
+    name: Android Emulator Workflow
     environment:
       vars:
         PROJECT_NAME: "MyReactNativeApp" # Replace with your project name
-      flutter: stable
       android:
-        ndk: latest
+        api_level: 30
+        build_tools: "30.0.3"
+        abi: "x86_64" # Emulator architecture
     scripts:
       - name: Install dependencies
         script: |
           npm install
-      - name: Build APK
+      - name: Set up AVD
         script: |
-          cd android
-          ./gradlew assembleRelease
+          echo "no" | avdmanager create avd -n test -k "system-images;android-30;google_apis;x86_64"
+          emulator -avd test -no-audio -no-window &
+          adb wait-for-device
+      - name: Run App on Emulator
+        script: |
+          npx react-native start &
+          npx react-native run-android
     artifacts:
-      - android/app/build/outputs/apk/release/app-release.apk
+      - android/app/build/outputs/apk/debug/app-debug.apk
     publishing:
       email:
         recipients:
-          - "ikram.ul.haqrmit.edu.au" # Replace with your email to receive build status
+          - "ikram.ul.haqrmit.edu.au" # Replace with your email for build status notifications
