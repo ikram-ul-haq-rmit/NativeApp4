@@ -1,10 +1,13 @@
 workflows:
   android_emulator:
-    name: Android APK Simple Build for Emulator
+    name: Android APK Simple Build1 for Emulator
     environment:
       vars:
         PROJECT_NAME: "MyReactNativeApp" # Replace with your project name
     scripts:
+      - name: Generate JavaScript bundle
+        script: |
+          npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
       - name: Install dependencies
         script: |
           npm install
