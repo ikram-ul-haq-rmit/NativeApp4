@@ -1,25 +1,10 @@
 workflows:
   android_emulator:
-    name: Android Emulator Workflow
+    name: Android Emulator Workflow Simple1
     environment:
       vars:
-        PROJECT_NAME: "MyReactNativeApp" # Replace with your project name
+        PROJECT_NAME: "MyReactNativeApp" # Replace with your project name    
     scripts:
-      - name: Install dependencies
-        script: |
-          npm install
-      - name: Set up AVD
-        script: |
-          echo "no" | avdmanager create avd -n test -k "android-30;x86_64"
-          emulator -avd test -no-audio -no-window &
-          adb wait-for-device
-      - name: Run App on Emulator
-        script: |
-          npx react-native start &
-          npx react-native run-android
+        - ./gradlew assembleDebug
     artifacts:
-      - android/app/build/outputs/apk/debug/app-debug.apk
-    publishing:
-      email:
-        recipients:
-          - "ikram.ul.haq@rmit.edu.au" # Replace with your email for build status notifications
+        - build/outputs/**/**/*.apk
