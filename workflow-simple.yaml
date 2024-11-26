@@ -1,8 +1,10 @@
-# Workflow setup for building Native Android project
 workflows:
   android_emulator:
     name: Android Emulator Workflow Simple1
-        scripts:
-            - ./gradlew assembleDebug
-        artifacts:
-            - build/outputs/**/**/*.apk
+    environment:
+      vars:
+        PROJECT_NAME: "MyReactNativeApp" # Replace with your project name    
+    scripts:
+        - ./gradlew assembleDebug
+    artifacts:
+        - build/outputs/**/**/*.apk
