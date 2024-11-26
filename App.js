@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to React Native!</Text>
+      <Text style={styles.title}>Welcome to RMIT Health App 1.0!</Text>
 
       {/* Input Field */}
       <TextInput
