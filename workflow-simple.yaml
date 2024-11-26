@@ -1,7 +1,7 @@
 # Workflow setup for building Native Android project
 workflows:
-    android-app: # workflow ID
-        name: Android app workflow
+  android_emulator:
+    name: Android Emulator Workflow Simple1
         scripts:
             - ./gradlew assembleDebug
         artifacts:
